@@ -24,6 +24,6 @@ jobs:
         sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
         make
         ls *
-        find -name libltdl.so.7 /usr
+        find /usr -name libltdl.so.7 
         make check
         
