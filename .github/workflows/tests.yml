@@ -24,6 +24,6 @@ jobs:
         sudo apt-get update && sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
         make
         ls *
-        find /usr /usr/local /lib -name "libltdl.so.7"
+        # I don't know why i have to add this path
         LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu make check
         
