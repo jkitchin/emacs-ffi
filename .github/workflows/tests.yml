@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Run tests
       run: |
-        sudo apt-get update && sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
+        sudo apt-get update && sudo apt-get install -y libffi-dev
         make
         ls *
-        LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu make check
+        make check
