@@ -23,5 +23,6 @@ jobs:
       run: |
         sudo apt-get install -y libltdl-dev libffi-dev
         make
-        make check
+        ls /usr/lib/libltdl*
+        LD_LIBRARY_PATH=/usr/lib make check
         
