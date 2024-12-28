@@ -14,18 +14,21 @@
 # along with this.  If not, see <https://www.gnu.org/licenses/>.
 
 # Where your dynamic-module-enabled Emacs build lies.
-EMACS_BUILDDIR = /home/tromey/Emacs/emacs
+EMACS  = $(shell realpath `which emacs`)
+EMACS_BIN = $(shell dirname $(EMACS))
+EMACS_BUILDDIR ?= $(shell dirname $(EMACS_BIN))
 
-LDFLAGS = -shared
+LDFLAGS += -shared
 LIBS = -lffi -lltdl
-CFLAGS += -g3 -Og -finline-small-functions -shared -fPIC -I$(EMACS_BUILDDIR)/src/ -I$(EMACS_BUILDDIR)/lib/
+CFLAGS += -g3 -Og -shared -fPIC -I$(EMACS_BUILDDIR)/include/ -I$(EMACS_BUILDDIR)/lib/
+CFLAGS += $(shell pkg-config -cflags libffi)
 
 # Set this to debug make check.
 #GDB = gdb --args
 
 all: ffi-module.so
 
-ffi-module.so: ffi-module.o
+ffi-module.so: ffi-module.o	
 	$(CC) $(LDFLAGS) -o ffi-module.so ffi-module.o $(LIBS)
 
 ffi-module.o: ffi-module.c
@@ -33,7 +36,7 @@ ffi-module.o: ffi-module.c
 check: ffi-module.so test.so
 	LD_LIBRARY_PATH=`pwd`:$$LD_LIBRARY_PATH; \
 	export LD_LIBRARY_PATH; \
-	$(GDB) $(EMACS_BUILDDIR)/src/emacs -batch -L `pwd` -l ert -l test.el \
+	$(GDB) $(EMACS) -batch -L `pwd` -l ert -l test.el \
 	  -f ert-run-tests-batch-and-exit
 
 test.so: test.o
