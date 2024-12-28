@@ -22,5 +22,5 @@ jobs:
     - name: Run tests
       run: |
         make
-	make check
+        make check
         
