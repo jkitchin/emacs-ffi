@@ -24,5 +24,5 @@ jobs:
         sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev
         make
         ls *
-        cp /usr/lib/x86_64-linux-gnu/libltdl.so.7 .
+        sudo cp /usr/lib/x86_64-linux-gnu/libltdl.so.7 /usr/lib
         make check
