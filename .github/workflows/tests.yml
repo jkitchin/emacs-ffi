@@ -1,5 +1,5 @@
 # adapted from https://github.com/purcell/package-lint/blob/master/.github/workflows/test.yml
-name: scimax
+name: emacs-ffi
 
 on: [push]
 
