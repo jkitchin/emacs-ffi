@@ -34,8 +34,6 @@ ffi-module.so: ffi-module.o
 ffi-module.o: ffi-module.c
 
 check: ffi-module.so test.so
-	LD_LIBRARY_PATH=`pwd`:$$LD_LIBRARY_PATH; \
-	export LD_LIBRARY_PATH; \
 	$(GDB) $(EMACS) -batch -L `pwd` -l ert -l test.el \
 	  -f ert-run-tests-batch-and-exit
 
