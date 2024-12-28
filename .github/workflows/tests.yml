@@ -1,0 +1,26 @@
+# adapted from https://github.com/purcell/package-lint/blob/master/.github/workflows/test.yml
+name: scimax
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    strategy:
+      fail-fast: false
+      matrix:
+        emacs_version:
+          - snapshot
+
+    steps:
+    - uses: purcell/setup-emacs@master
+      with:
+        version: ${{ matrix.emacs_version }}
+
+      
+    - uses: actions/checkout@v4
+    - name: Run tests
+      run: |
+        make
+	make check
+        
