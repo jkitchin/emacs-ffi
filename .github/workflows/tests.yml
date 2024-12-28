@@ -24,7 +24,4 @@ jobs:
         sudo apt-get update && sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
         make
         ls *
-        make test
-        echo "LD_LIBRARY_PATH:"
-        echo $LD_LIBRARY_PATH
-        make check
+        LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu make check
