@@ -21,9 +21,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Run tests
       run: |
-        sudo apt-get install -y libltdl7 libltdl-dev libffi-dev
+        sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
         make
         ls *
         ls /usr/lib
-        # make check
+        make check
         
