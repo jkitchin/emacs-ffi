@@ -24,6 +24,6 @@ jobs:
         sudo apt-get install -y libtool libltdl7 libltdl-dev libffi-dev
         make
         ls *
-        ls /usr/lib
+        ls /usr/local/lib
         make check
         
