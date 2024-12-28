@@ -15,16 +15,26 @@
 
 (require 'cl-macs)
 
-(module-load "ffi-module.so")
+(defvar ffi-module
+  "ffi-module.so"
+  "Name of the ffi-module shared library.")
+
+;; this module is located in the directory where ffi.el is located.
+(module-load (expand-file-name ffi-module (file-name-directory load-file-name)))
 
 (gv-define-simple-setter ffi--mem-ref ffi--mem-set t)
 
+
 (defmacro define-ffi-library (symbol name)
-  (let ((library (cl-gensym)))
+  "Create a pointer named to the c library."
+  (let ((library (cl-gensym))
+	(docstring (format "Returns a pointer to the %s library." name)))
     (set library nil)
     `(defun ,symbol ()
+       ,docstring
        (or ,library
 	   (setq ,library (ffi--dlopen ,name))))))
+
 
 (defmacro define-ffi-function (name c-name return-type arg-types library)
   (let* (
@@ -41,6 +51,8 @@
 	 (setq ,function (ffi--dlsym ,c-name (,library))))
        ;; FIXME do we even need a separate prep?
        (ffi--call ,cif ,function ,@arg-names))))
+
+
 
 (defun ffi-lambda (function-pointer return-type arg-types)
   (let* ((cif (ffi--prep-cif return-type (vconcat arg-types))))
