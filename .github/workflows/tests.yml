@@ -25,4 +25,5 @@ jobs:
         make
         ls *
         ls /usr/lib/x86_64-linux-gnu/libltdl.so.7
+        sudo ldconfig
         make check
