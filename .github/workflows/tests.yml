@@ -25,4 +25,5 @@ jobs:
         make
         ls *
         make test
+        echo $LD_LIBRARY_PATH
         make check
