@@ -27,3 +27,7 @@ jobs:
         ls /usr/lib/x86_64-linux-gnu/libltdl.so.7
         sudo ldconfig
         make check
+
+    - name: Run gsl test
+      run: |
+        cd examples/gsl && make && make test
