@@ -22,6 +22,7 @@ jobs:
     - name: Run tests
       run: |
         sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev
+	sudo ldconfig
         make
         ls *
         # make check
@@ -31,4 +32,5 @@ jobs:
         find /usr/lib -name "libgsl.so.27"
         pkg-config --cflags gsl
         pkg-config --libs gsl
+        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
         cd examples/gsl && make && pwd && ls && make test
