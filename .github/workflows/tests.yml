@@ -37,4 +37,5 @@ jobs:
         # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu
         # ls /lib/x86_64-linux-gnu
         ldd `which emacs`
+        emacs -batch --eval '(message "hello")'
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
