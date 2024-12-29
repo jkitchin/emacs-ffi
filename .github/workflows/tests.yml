@@ -28,4 +28,4 @@ jobs:
 
     - name: Run gsl test
       run: |
-        cd examples/gsl && make && make test
+        cd examples/gsl && make && ls && make test
