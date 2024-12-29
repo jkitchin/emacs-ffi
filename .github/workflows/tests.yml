@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         emacs_version:
-          - 29.4
+          - snapshot
 
     steps:
     - uses: purcell/setup-emacs@master
