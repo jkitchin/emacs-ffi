@@ -16,16 +16,9 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install -y emacs libltdl7 libltdl-dev libffi-dev libgsl-dev       
         make
-        ls *
-        # make check
+        make check
 
     - name: Run gsl test
       run: |
-        # find /usr/lib -name "libgsl.so.27"
-        # pkg-config --cflags gsl
-        # pkg-config --libs gsl
-        # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu
-        # ls /lib/x86_64-linux-gnu
-        # ldd `which emacs`
         emacs -batch --eval '(message "hello")'
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
