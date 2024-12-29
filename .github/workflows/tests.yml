@@ -1,4 +1,3 @@
-# adapted from https://github.com/purcell/package-lint/blob/master/.github/workflows/test.yml
 name: emacs-ffi
 
 on: [push]
@@ -9,20 +8,13 @@ jobs:
     runs-on: ubuntu-latest    
     strategy:
       fail-fast: false
-      matrix:
-        emacs_version:
-          - snapshot
 
     steps:
-    - uses: purcell/setup-emacs@master
-      with:
-        version: ${{ matrix.emacs_version }}
-
       
     - uses: actions/checkout@v4
     - name: Run tests
       run: |
-        sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev       
+        sudo apt-get update && sudo apt-get install -y emacs-snapshot libltdl7 libltdl-dev libffi-dev libgsl-dev       
         make
         ls *
         # make check
@@ -34,6 +26,6 @@ jobs:
         # pkg-config --libs gsl
         # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu
         # ls /lib/x86_64-linux-gnu
-        ldd `which emacs`
+        # ldd `which emacs`
         emacs -batch --eval '(message "hello")'
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
