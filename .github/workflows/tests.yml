@@ -22,7 +22,7 @@ jobs:
     - name: Run tests
       run: |
         sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev
-	sudo ldconfig
+        sudo ldconfig
         make
         ls *
         # make check
