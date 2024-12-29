@@ -32,5 +32,5 @@ jobs:
         find /usr/lib -name "libgsl.so.27"
         pkg-config --cflags gsl
         pkg-config --libs gsl
-        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu
         cd examples/gsl && make && pwd && ls && make test
