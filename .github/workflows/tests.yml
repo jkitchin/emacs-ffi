@@ -28,7 +28,7 @@ jobs:
         make
         ls *
         # make check
-why is
+
     - name: Run gsl test
       run: |
         # find /usr/lib -name "libgsl.so.27"
