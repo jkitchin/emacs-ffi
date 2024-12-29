@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Run tests
       run: |
-        sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev
+        sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev libjansson-dev
         sudo ldconfig
         ls -R /nix/store/pxwhyhhyfa4q7nv4065b9n5x7xhvi39i-jansson-2.14
         ls -R /nix/store/7d634lfkn191jbalvdm5jdsxf4709dda-emacs-29-4/lib/
