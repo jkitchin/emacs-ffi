@@ -35,5 +35,6 @@ jobs:
         # pkg-config --cflags gsl
         # pkg-config --libs gsl
         # sudo rm /usr/lib/x86_64-linux-gnu/libjansson*
-        # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu:/nix/store/pxwhyhhyfa4q7nv4065b9n5x7xhvi39i-jansson-2.14/lib
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu
+        ls /lib/x86_64-linux-gnu
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
