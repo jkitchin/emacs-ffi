@@ -36,4 +36,5 @@ jobs:
         # pkg-config --libs gsl
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu
         # ls /lib/x86_64-linux-gnu
+        ldd `which emacs`
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
