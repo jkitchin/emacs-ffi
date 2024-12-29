@@ -12,13 +12,20 @@ jobs:
     steps:
       
     - uses: actions/checkout@v4
-    - name: Run tests
+
+    - name: Install packages
+      run: sudo apt-get update && sudo apt-get install -y emacs libltdl7 libltdl-dev libffi-dev libgsl-dev
+      
+    - name: About Emacs
       run: |
-        sudo apt-get update && sudo apt-get install -y emacs libltdl7 libltdl-dev libffi-dev libgsl-dev       
+        emacs --version
+        emacs -batch --eval '(message "hello")'
+
+    - name: Run ffi tests
+      run: |       
         make
         make check
 
     - name: Run gsl test
       run: |
-        emacs -batch --eval '(message "hello")'
         cd examples/gsl && make && pwd && ls && ldd gsl-linalg.so && make test
