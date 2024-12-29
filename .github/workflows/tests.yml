@@ -24,7 +24,7 @@ jobs:
     - name: Run ffi tests
       run: |       
         make
-        # make check
+        make check || true
 
     - name: Run gsl test
       run: |
