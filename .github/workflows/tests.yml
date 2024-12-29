@@ -23,8 +23,8 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install -y libltdl7 libltdl-dev libffi-dev libgsl-dev
         sudo ldconfig
-        ls /nix/store/pxwhyhhyfa4q7nv4065b9n5x7xhvi39i-jansson-2.14
-        ls /nix/store/7d634lfkn191jbalvdm5jdsxf4709dda-emacs-29-4/lib/
+        ls -R /nix/store/pxwhyhhyfa4q7nv4065b9n5x7xhvi39i-jansson-2.14
+        ls -R /nix/store/7d634lfkn191jbalvdm5jdsxf4709dda-emacs-29-4/lib/
         make
         ls *
         # make check
