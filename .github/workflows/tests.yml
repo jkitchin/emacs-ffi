@@ -3,9 +3,7 @@ name: emacs-ffi
 
 on: [push]
 
-env:
-  LD_LIBRARY_PATH: /lib/x86_64-linux-gnu
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest    
